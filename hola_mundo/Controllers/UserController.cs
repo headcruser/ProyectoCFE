@@ -221,5 +221,16 @@ namespace hola_mundo.Controllers
             }
 
         }
+
+
+        public ActionResult Modal()
+        {
+            return View();
+        }
+
+        //Respuesta JSON
+        public JsonResult getUsers() {
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
     }
 }
