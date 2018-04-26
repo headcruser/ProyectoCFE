@@ -1,15 +1,35 @@
 ﻿@model hola_mundo.Models.Usuario
 
-<!DOCTYPE html>
+@{
+    ViewBag.Title = "Detalles Usuario";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>show</title>
-</head>
-<body>
-    <h1>@Model.nombre</h1>
-    <h2>@Model.apellidos</h2>
-    <h3>@Model.edad</h3>
-</body>
-</html>
+<section>
+    <br />
+    <div class="container text-center">
+        <div class="row container">
+            <div class="col-md-4"></div>
+            <div class="col-sm-4 col-md-4">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="http://via.placeholder.com/400x300" alt="Lorem Ipsup" />
+                    <div class="caption text-center">
+                        <p><h3>@Model.nombre</h3></p>
+                        <p>
+                            @Model.apellidos
+                        </p>
+                        <p>
+                            @Model.edad
+                        </p>
+                        <p>
+                            @Html.ActionLink("Regresar", "Index", new { area = "" }, new { @class = "btn btn-default" })
+                            @Html.ActionLink("Editar", "Edit", new { id = Model.id }, new { @class = "btn btn-primary" })
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+</section>

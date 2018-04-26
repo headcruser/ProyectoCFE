@@ -1,20 +1,23 @@
 ﻿:root {
     --color: #9b59b6;
+    --color_letras: white;
+    --color_azul:#81CFE0;
+    --color_navbar: #2b2b2b;
 }
 header {
     background:#304354 !important;
 }
 .navbar {
-    background-color: #2b2b2b;
-    color:white;
+    background-color: var(--color_navbar);
+    color:var(--color_letras);
 }
 
 .navbar-brand:link, .navbar-brand:visited {
-    color: #81CFE0 !important;
+    color: var(--color_azul) !important;
 }
 
 .navbar-brand:hover, .navbar-brand:active {
-    color: #81CFE0 !important;
+    color: var(--color_azul) !important;
 }
 
 .parrafo {

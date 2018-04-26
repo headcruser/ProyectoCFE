@@ -1,5 +1,4 @@
-﻿using hola_mundo.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +10,7 @@ namespace hola_mundo.Controllers
     {
         public ActionResult Index()
         {
-            Usuario user = new Usuario();
-            user.MostrarDatos();
-            return View("Saludar");
+            return View();
         }
 
         public ActionResult About()
@@ -27,11 +24,6 @@ namespace hola_mundo.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
-
-        public ActionResult Saludar()
-        {
             return View();
         }
     }

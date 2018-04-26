@@ -1,49 +1,39 @@
-﻿@*Vista Principal del usuario*@
-@model List<hola_mundo.Models.Usuario>
+﻿@{
+    ViewBag.Title = "Select All Users";
+}
 
-<!DOCTYPE html>
+@using hola_mundo.Models
+@model IEnumerable<Usuario>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Listado de personas</title>
-</head>
-<body>
-        <h1> Vista usuarios</h1>
-
-        <table>
+<h2 class="text-center">Usuarios de Base de datos</h2>
+<hr />
+<div class="container">
+    @Html.ActionLink("Crear usuario", "Create", new { area = "" }, new { @class = "btn btn-primary" })
+    <br />
+    <br />
+    <table class="table">
+        <thead>
             <tr>
-                <th>#Id</th>
-
-                <th>Edad</th>
-
+                <th>#</th>
                 <th>Nombre</th>
-
-                <th>Apellidos</th>
-
+                <th>Email</th>
                 <th>Acciones</th>
             </tr>
-            @foreach(var item in Model)
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.id)</td>
-               
-                    <td>@Html.DisplayFor(modelItem => item.edad)</td>
-               
-                    <td>@Html.DisplayFor(modelItem => item.nombre)</td>
-               
-                    <td>@Html.DisplayFor(modelItem => item.apellidos)</td>
-
+                    <td>@usuario.id</td>
+                    <td>@usuario.nombre</td>
+                    <td>@usuario.email</td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new {/*id=item.PrimaryKey*/ })
-                        @Html.ActionLink("Details", "Details", new {/*id=item.PrimaryKey*/ })
-                        @Html.ActionLink("Delete", "Delete", new {/*id=item.PrimaryKey*/ })
+                        @Html.ActionLink("Editar", "Edit", new { id = usuario.id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Detalles", "Show", new { id = usuario.id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = usuario.id }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
-        </table>
-    <script>
-        //alert('hola mundo')
-    </script>
-</body>
-</html>
+        </tbody>
+    </table>
+</div>

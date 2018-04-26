@@ -10,7 +10,7 @@ namespace hola_mundo.Models
     public class Usuario
     {
         //Atributos
-        private int id           { get; set; }
+        public int id           { get; set; }
         public int edad         { get; set; }
         public String nombre    { get; set; }
         public String apellidos { get; set; }
@@ -25,12 +25,19 @@ namespace hola_mundo.Models
             edad = 18;
             nombre = "Usuario";
             apellidos = "Prueba";
+            email = "default@gmail.com";
         }
 
-        //métodos
-        public void MostrarDatos()
+        //Sobrecarga de constructor
+        public Usuario(int id,string nombre,string email)
         {
-            System.Console.WriteLine("Objeto Usuario"+ this.id);
+            this.id = id;
+            this.nombre = nombre;
+            this.email = email;
+
+            apellidos = "Prueba";
+            edad = 18;
         }
+
     }
 }
