@@ -1,0 +1,49 @@
+﻿@*Vista Principal del usuario*@
+@model List<hola_mundo.Models.Usuario>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listado de personas</title>
+</head>
+<body>
+        <h1> Vista usuarios</h1>
+
+        <table>
+            <tr>
+                <th>#Id</th>
+
+                <th>Edad</th>
+
+                <th>Nombre</th>
+
+                <th>Apellidos</th>
+
+                <th>Acciones</th>
+            </tr>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.id)</td>
+               
+                    <td>@Html.DisplayFor(modelItem => item.edad)</td>
+               
+                    <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+               
+                    <td>@Html.DisplayFor(modelItem => item.apellidos)</td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {/*id=item.PrimaryKey*/ })
+                        @Html.ActionLink("Details", "Details", new {/*id=item.PrimaryKey*/ })
+                        @Html.ActionLink("Delete", "Delete", new {/*id=item.PrimaryKey*/ })
+                    </td>
+                </tr>
+            }
+        </table>
+    <script>
+        //alert('hola mundo')
+    </script>
+</body>
+</html>

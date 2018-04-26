@@ -1,0 +1,38 @@
+﻿@*
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+     }
+*@
+
+@*
+        Escribiendo una variable
+
+    @{
+        String v_prueba = "Contacto y direcciones";
+
+        int numero = 1;
+
+        if (numero == 1)
+        {
+            v_prueba = "Soy uno";
+        }
+        else
+        {
+            v_prueba = "no soy uno";
+        }
+
+
+    }
+
+    <p>@v_prueba</p>
+
+    @for (var i = 10; i < 16; i++)
+{
+    <p style="font-size: @(i + "pt")">My font size is now: @i</p>
+}
+
+*@
+
+
+
+

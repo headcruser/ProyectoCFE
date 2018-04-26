@@ -1,0 +1,35 @@
+﻿@using hola_mundo.Models
+@model IEnumerable<Usuario>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuarios DB</title>
+</head>
+<body>
+    <section>
+        <table cellpadding="0" cellspacing="0">
+            <caption>Usuarios de base de datos</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Usuario customer in Model)
+                {
+                    <tr>
+                        <td>@customer.id</td>
+                        <td>@customer.nombre</td>
+                        <td>@customer.email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

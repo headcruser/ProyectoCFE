@@ -1,0 +1,82 @@
+﻿:root {
+    --color: #9b59b6;
+}
+header {
+    background:#304354 !important;
+}
+.navbar {
+    background-color: #2b2b2b;
+    color:white;
+}
+
+.navbar-brand:link, .navbar-brand:visited {
+    color: #81CFE0 !important;
+}
+
+.navbar-brand:hover, .navbar-brand:active {
+    color: #81CFE0 !important;
+}
+
+.parrafo {
+    background: var(--color);
+    color: aliceblue;
+    padding: 10px;
+    font-size: 15px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+    .parrafo:hover {
+        background: green;
+        color:white;
+    }
+
+footer {
+    background: #2b2b2b;
+    padding: 30px 0;
+    color: beige;
+}
+
+.redes-sociales {
+    text-align: center;
+    border-radius: 6px;
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.contacto {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.twitter:hover {
+    background: #1da1f2;
+}
+
+
+.facebook:hover {
+    background: #3b5998;
+}
+
+.ins:hover {
+    background: #405de6;
+}
+
+.tinder:hover{
+    background: #fd297B;
+}
+
+
+.item {
+    background: rgba(255, 255, 255,0.5);
+    flex: auto;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 0 10px;
+    color:white;
+}
