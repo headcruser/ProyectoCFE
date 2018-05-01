@@ -2,14 +2,15 @@
 @{
     ViewBag.Title = "Modal";
 }
+<br />
+<div class="jumbotron container text-center">
+    <h2>Modal</h2>
+    <button type="button"
+            class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="btn-listar">
+        Lanzar Modal
+    </button>
+</div>
 
-<h2>Modal</h2>
-
-<!-- Button trigger modal -->
-<button type="button" 
-        class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="btn-listar">
-    Lanzar Modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -47,7 +48,13 @@
             url: '@Url.Action("getUsers")',
             datatype: "json",
             success: (data)=> {
-                alert(data)
+                $(data).each((key, value) => {
+                    tablaTemas.append("<tr>")
+                    tablaTemas.append("<td>" + value.id     + "</td>")
+                    tablaTemas.append("<td>" + value.nombre + "</td>")
+                    tablaTemas.append("<td>" + value.email  + "</td>")
+                    tablaTemas.append("</tr>")
+                })
             }
         });
     })

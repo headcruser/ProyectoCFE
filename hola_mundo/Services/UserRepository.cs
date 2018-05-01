@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using hola_mundo.Services;
 using System.Linq;
 using System.Web;
 
@@ -9,29 +10,13 @@ namespace hola_mundo.Services
 {
     public class UserRepository
     {
-        string __connection;
+        private const string SERVER = @"Server=localhost;Database=cfe;Uid=root;Pwd=admin120324";
 
         MySqlConnection mysqlConn;
 
         public UserRepository()
         {
-            createConnection();
-        }
-
-        /*
-         * Crea una instancia de la conexion a base de datos
-        */
-        private void createConnection()
-        {
-            __connection = @"Server=localhost;Database=cfe;Uid=root;Pwd=admin120324";
-            try
-            {
-                mysqlConn = new MySqlConnection(__connection);
-            }
-            catch
-            {
-                throw new Exception("No hay conexion con la base de datos");
-            }
+            mysqlConn = DriverMysql.GetInstance();
         }
 
         private String Select()

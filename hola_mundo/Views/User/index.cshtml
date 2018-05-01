@@ -11,7 +11,7 @@
     @Html.ActionLink("Crear usuario", "Create", new { area = "" }, new { @class = "btn btn-primary" })
     <br />
     <br />
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
             <tr>
                 <th>#</th>
@@ -30,7 +30,7 @@
                     <td>
                         @Html.ActionLink("Editar", "Edit", new { id = usuario.id }, new { @class = "btn btn-primary" })
                         @Html.ActionLink("Detalles", "Show", new { id = usuario.id }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Eliminar", "Delete", new { id = usuario.id }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = usuario.id }, new { @class = "btn btn-danger"})
                     </td>
                 </tr>
             }

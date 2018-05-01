@@ -8,9 +8,13 @@ using System.Collections.Generic;
 
 using hola_mundo.Models;  
 using hola_mundo.Services;
+using Newtonsoft.Json;
 
 namespace hola_mundo.Controllers
 {
+    /**
+     * Controlador Usuario
+     */
     public class UserController : Controller
     {
         string __connection;
@@ -33,7 +37,7 @@ namespace hola_mundo.Controllers
         }
         
         /**
-        * Renderiz la vista Principal del Controlador usuario  
+        * Renderiza la vista Principal del Controlador usuario  
         */
         public ActionResult Index()
         {
@@ -45,33 +49,7 @@ namespace hola_mundo.Controllers
          */
         public ActionResult Show(int id)
         {
-            Usuario usuario = null;
-
-            string query = "select id,name,email from users where id=" + id;
-
-            using (MySqlConnection mysqlConn = new MySqlConnection(__connection))
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query))
-                {
-                    cmd.Connection = mysqlConn;
-                    mysqlConn.Open();
-
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            usuario = new Usuario(
-                                Convert.ToInt32(sdr["id"]),
-                                sdr["name"].ToString(),
-                                sdr["email"].ToString()
-                            );
-                        }
-                    }
-                    mysqlConn.Close();
-
-                }
-            }
-            return View(usuario);
+            return View(user.find(id));
 
         }
 
@@ -89,12 +67,13 @@ namespace hola_mundo.Controllers
         [HttpPost]
         public ActionResult Store()
         {
+            //Poner Variables de su formulario
             string name = Request.Form.Get("nombre");
             string email = Request.Form.Get("email");
             string password = "admin120324";
 
             try
-            {
+            {   //Insertar query, segun la estructura de la tabla creada
                 string query = "INSERT INTO users (name,email,password) " +
                     "VALUES ('" + name +"' , '" + email + "', '"+password+"' )";
 
@@ -126,33 +105,8 @@ namespace hola_mundo.Controllers
          */
         public ActionResult Edit(int id)
         {
-            Usuario usuario = null;
-
-            string query = "select id,name,email from users where id="+id;
-
-            using (MySqlConnection mysqlConn = new MySqlConnection(__connection))
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query))
-                {
-                    cmd.Connection = mysqlConn;
-                    mysqlConn.Open();
-
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            usuario = new Usuario(
-                                Convert.ToInt32(sdr["id"]),
-                                sdr["name"].ToString(),
-                                sdr["email"].ToString()
-                            );
-                        }
-                    }
-                    mysqlConn.Close();
-
-                }
-            }
-            return View(usuario);
+            Usuario edit = user.find(id);
+            return View(edit);
         }
 
         /**
@@ -218,8 +172,8 @@ namespace hola_mundo.Controllers
         /**
          * Regresa una peticion en formato Json/Ajax
          */
-        public JsonResult getUsers() {
-            return Json("Success", JsonRequestBehavior.AllowGet);
+        public ActionResult getUsers() {
+            return Json(user.All(), JsonRequestBehavior.AllowGet);
         }
     }
 }
